@@ -56,7 +56,7 @@ def main():
         pap_sent_matches[paper.paper_id] = [(search_sent, len(re.findall(match_regex, fulltext))) for
                                             match_regex, search_sent in zip(match_regex_arr, SEARCH_SENTENCES)]
     file_name = datetime.datetime.now().strftime("%Y%m%d") + "_" + from_date + "_results.csv"
-    if sum([sum(num_match) for _, num_match in pap_sent_matches.values()]) > 0:
+    if sum([num_match for sent_match in pap_sent_matches.values() for _, num_match in sent_match]) > 0:
         logger.info("Found one or more papers matching search criteria")
         with open(os.path.join(args.working_dir, file_name), 'w') as out_file:
             for pap_id, sent_matches in pap_sent_matches.items():
