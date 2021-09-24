@@ -41,7 +41,8 @@ def main():
     all_files = sorted([f for f in os.listdir(args.working_dir) if os.path.isfile(os.path.join(args.working_dir, f))])
     latest_file = all_files[-1] if all_files else None
     from_date = latest_file.split("_")[0] if latest_file else args.from_date
-    exclude_ids = [line.split("\t")[0].replace("WBPaper", "") for line in open(latest_file)] if latest_file else []
+    exclude_ids = [line.split("\t")[0].replace("WBPaper", "") for line in open(
+        os.path.join(args.working_dir, latest_file))] if latest_file else []
     cm.load_from_wb_database(
         args.db_name, args.db_user, args.db_password, args.db_host, ssh_host=args.ssh_host, ssh_user=args.ssh_user,
         ssh_passwd=args.ssh_password, from_date=from_date, exclude_ids=exclude_ids, pap_types=["Journal_article"])
