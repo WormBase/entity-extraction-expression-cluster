@@ -44,8 +44,8 @@ def main():
     exclude_ids = [line.split("\t")[0].replace("WBPaper", "") for line in open(
         os.path.join(args.working_dir, latest_file))] if latest_file else []
     cm.load_from_wb_database(
-        args.db_name, args.db_user, args.db_password, args.db_host, ssh_host=args.ssh_host, ssh_user=args.ssh_user,
-        ssh_passwd=args.ssh_password, from_date=from_date, exclude_ids=exclude_ids, pap_types=["Journal_article"])
+        args.db_name, args.db_user, args.db_password, args.db_host, from_date=from_date, exclude_ids=exclude_ids,
+        pap_types=["Journal_article"])
     logger.info("Finished loading papers from DB")
     match_regex_arr = [re.compile(r"(?i)[\s\(\[\{\.,;:\'\"\<](" + search_sent + ")[\s\.;:,'\"\)\]\}\>\?]") for
                        search_sent in SEARCH_SENTENCES]
