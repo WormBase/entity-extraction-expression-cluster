@@ -17,12 +17,6 @@ def main():
     parser.add_argument("-U", "--db-user", metavar="db_user", dest="db_user", type=str)
     parser.add_argument("-P", "--db-password", metavar="db_password", dest="db_password", type=str, default="")
     parser.add_argument("-H", "--db-host", metavar="db_host", dest="db_host", type=str)
-    parser.add_argument("-y", "--ssh-host", metavar="ssh_host", dest="ssh_host",
-                        type=str)
-    parser.add_argument("-w", "--ssh-username", metavar="ssh_user", dest="ssh_user",
-                        type=str)
-    parser.add_argument("-z", "--ssh-password", metavar="ssh_password", dest="ssh_password",
-                        type=str)
     parser.add_argument("-l", "--log-file", metavar="log_file", dest="log_file", type=str, default=None,
                         help="path to log file")
     parser.add_argument("-L", "--log-level", dest="log_level", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR',
